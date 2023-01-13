@@ -18,7 +18,7 @@ client.on('ready', () => {
 })
 // Greetings
 client.on('messageCreate', message => {
-    const regex = /(hi|hello|hey|hei|hallo|halla|heisann)/;
+    const regex = /(hi|hello|hey|hei|hallo|halla|yo|heisann)/;
     if (regex.test(message.content.toLowerCase()) && message.author.id !== client.user.id) {
         const greetingArr = ["Hello there!", "Hi there!", "What's up?", "Yo!", "Heya", "Greetings!", "Hallo - hva kan jeg hjelpe deg med idag?"];
         const svar = greetingArr[Math.floor(Math.random() * greetingArr.length)];
@@ -31,8 +31,8 @@ client.on('messageCreate', message => {
         const response = responses[Math.floor(Math.random() * responses.length)]
         message.reply(`${client.user} ${response} `);
 // API
-    } else if (message.content === 'joke') {
-        axios.get('https://jokeapi.dev/joke/programming')
+    } else if (message.content.toLowerCase() === 'joke') {
+        axios.get('https://jokeapi.dev/joke/Any')
         .then(response => {
         //   const category = response.data.category;
           const joke = response.data.joke;
@@ -43,7 +43,7 @@ client.on('messageCreate', message => {
           console.log(error);
         });
     }
-    else if (message.content === 'bored') {
+    else if (message.content.toLowerCase() === 'bored') {
         axios.get('http://www.boredapi.com/api/activity?participants=1').then(response => {
             const activity = response.data.activity;
             message.reply(`${activity}`)
