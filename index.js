@@ -32,7 +32,7 @@ client.on('messageCreate', message => {
         message.reply(`${client.user} ${response} `);
 // API
     } else if (message.content === 'joke') {
-        axios.get('https://jokeapi.dev/joke/Any')
+        axios.get('https://jokeapi.dev/joke/programming')
         .then(response => {
         //   const category = response.data.category;
           const joke = response.data.joke;
@@ -42,6 +42,12 @@ client.on('messageCreate', message => {
         .catch(error => {
           console.log(error);
         });
+    }
+    else if (message.content === 'bored') {
+        axios.get('http://www.boredapi.com/api/activity?participants=1').then(response => {
+            const activity = response.data.activity;
+            message.reply(`${activity}`)
+        })
     }
 });
 
