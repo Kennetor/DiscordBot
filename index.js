@@ -38,7 +38,7 @@ client.on('messageCreate', message => {
           const joke = response.data.setup;
           const delivery = response.data.delivery;
         //   const type = response.data.type;
-          message.reply(`${joke}${delivery}`);
+          message.reply(`${joke}\n\ ${delivery}`);
         })
         .catch(error => {
           console.log(error);
